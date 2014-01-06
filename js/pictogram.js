@@ -18,20 +18,6 @@ var App = {
 	},
 
 	getFormData: function() {
-
-	},
-
-	getFormName: function() {
-
-	},
-
-	getFormId: function() {
-
-	},
-
-	initData: function() {
-		console.log('get chat data');
-		var name = document.getElementById('chartName').value;		
 		// Real data
 		
 		var formData1 = document.getElementsByClassName('form');
@@ -59,8 +45,24 @@ var App = {
 			{id: 3, icon: 'linkedin', dataname: 'LinkedIn User', amount: 5, color: 'yellow'},
 			{id: 4, icon: 'pinterest', dataname: 'Pinteres User', amount: 8, color: 'red'},
 		];
+
+		return data;
+	},
+
+	getFormName: function() {
+		var name = document.getElementById('chartName').value;	
+		return name;
+	},
+
+	getFormId: function() {
+
+	},
+
+	initData: function() {
+		console.log('get chat data');
+			
 		// create Pictogram instance
-		this.picto = new Pictogram(name, data);
+		this.picto = new Pictogram(App.getFormName(), App.getFormData());
 		this.picto.render();
 
 	}
