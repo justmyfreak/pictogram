@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Charting</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body onload="">
+	<div id="icon-container" class="icon-container">
+		<div class="header">
+			<h1>Pictogram</h1>
+		</div>
+		<div class="add-new">
+			<button onclick="App.addNewPictogram()">Add New Chart</button>
+			<hr style="width:97%">
+		</div>
+		<div class="new-chart">
+			<div>Chart Name : <input type="text" id="chartName" name="chartName"></div>
+			<div class="form">
+				<input type="hidden" class="itemId" value="1">
+				<select class="icon" name="icon">
+					<option value="facebook">Facebook</option>
+					<option value="twitter">Twitter</option>
+					<option value="fouresquare">Fouresquare</option>
+					<option value="pinterest">Pinterest</option>
+				</select>
+				<input placeholder="label" type="text" class="name" name="name" placholder="Name">
+				<input min="0" type="number" class="amount" name="amount">
+				<select class="color" name="color">
+					<option value="red">red</option>
+					<option value="yellow">yellow</option>
+					<option value="blue">blue</option>
+					<option value="green">green</option>
+				</select>
+			</div>
+			<div class="form">
+				<input type="hidden" class="itemId" value="2">
+				<select class="icon" name="icon">
+					<option value="facebook">Facebook</option>
+					<option value="twitter">Twitter</option>
+					<option value="fouresquare">Fouresquare</option>
+					<option value="pinterest">Pinterest</option>
+				</select>
+				<input placeholder="label" type="text" class="name" name="name" placholder="Name">
+				<input min="0" type="number" class="amount" name="amount">
+				<select class="color" name="color">
+					<option value="red">red</option>
+					<option value="yellow">yellow</option>
+					<option value="blue">blue</option>
+					<option value="green">green</option>
+				</select>
+			</div>
+			<div class="form">
+				<input type="hidden" class="itemId" value="3">
+				<select class="icon" name="icon">
+					<option value="facebook">Facebook</option>
+					<option value="twitter">Twitter</option>
+					<option value="fouresquare">Fouresquare</option>
+					<option value="pinterest">Pinterest</option>
+				</select>
+				<input placeholder="label" type="text" class="name" name="name" placholder="Name">
+				<input min="0" type="number" class="amount" name="amount">
+				<select class="color" name="color">
+					<option value="red">red</option>
+					<option value="yellow">yellow</option>
+					<option value="blue">blue</option>
+					<option value="green">green</option>
+				</select>
+			</div>
+			<div class="form">
+				<input type="hidden" class="itemId" value="4">
+				<select class="icon" name="icon">
+					<option value="facebook">Facebook</option>
+					<option value="twitter">Twitter</option>
+					<option value="fouresquare">Fouresquare</option>
+					<option value="pinterest">Pinterest</option>
+				</select>
+				<input placeholder="label" type="text" class="name" name="name" placholder="Name">
+				<input min="0" type="number" class="amount" name="amount">
+				<select class="color" name="color">
+					<option value="red">red</option>
+					<option value="yellow">yellow</option>
+					<option value="blue">blue</option>
+					<option value="green">green</option>
+				</select>
+			</div>
+			<button onclick="App.createChart()">Create Chart</button>
+			<button onclick="App.updateChart()">Update Chart</button>
+		</div>
+	</div>
+	<div id="editor" class="editor">
+		<div class="svg-container">
+			<div id="pictogram1" class="pictogram" style="height:400px;width:400px;padding-left:10px;">
+				<svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.5px;" viewBox="0 0 225 300" preserveAspectRatio="xMinYMin meet">
+					<!-- <text x="0" y="15" fill="red">I love SVG</text> -->
+					<!-- <g>
+						<text x="0" y="15" fill="red" > Facebook User </text>
+						<rect x="100" y="0" width="16" height="16"
+						  style="fill:green" />
+						<rect x="120" y="0" width="16" height="16"
+						  style="fill:green" />
+						<rect x="140" y="0" width="16" height="16"
+						  style="fill:green" />
+						<rect x="160" y="0" width="16" height="16"
+						  style="fill:green" />
+					</g>
+					<g>
+						<text x="0" y="35" fill="red" > Twitter User </text>
+						<circle cx="100" cy="30" r="8" stroke="black" stroke-width="1" fill="blue" />
+						<circle cx="120" cy="30" r="8" stroke="black" stroke-width="1" fill="blue" />
+						<circle cx="140" cy="30" r="8" stroke="black" stroke-width="1" fill="blue" />
+						<circle cx="160" cy="30" r="8" stroke="black" stroke-width="1" fill="blue" />
+						<circle cx="180" cy="30" r="8" stroke="black" stroke-width="1" fill="blue" />
+					</g>
+					<g><text x="0" y="55" fill="red" > LinkedIn User </text></g>
+					<g><text x="0" y="75" fill="red" > Pinteres User </text></g>  -->
+				</svg>
+			</div>
+			<svg height="100%" width="100%">
+				
+				<!-- <g transform="translate(0,0)">
+					<rect width="40" height="19"></rect>
+					<text x="37" y="9.5" dy=".35em">4</text>
+				</g>
+				<g transform="translate(0,20)">
+					<rect width="80" height="19"></rect>
+					<rect width="90" height="19"></rect>
+					<text x="77" y="9.5" dy=".35em">8</text>
+				</g>
+				<g transform="translate(0,40)">
+					<rect width="150" height="19"></rect>
+					<text x="147" y="9.5" dy=".35em">15</text>
+				</g>
+				<g transform="translate(0,60)">
+					<rect width="160" height="19"></rect>
+					<text x="157" y="9.5" dy=".35em">16</text>
+				</g>
+				<g transform="translate(0,80)">
+					<rect width="230" height="19"></rect>
+					<text x="227" y="9.5" dy=".35em">23</text>
+				</g>
+				<g transform="translate(0,100)">
+					<rect width="420" height="19"></rect>
+					<text x="417" y="9.5" dy=".35em">42</text>
+				</g> -->
+			</svg>
+		</div>
+	</div>
+	<script src="js/pictogram.js"></script>
+</body>
+</html>

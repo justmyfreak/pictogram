@@ -1,0 +1,19 @@
+.icon-container {
+	width: 40%;
+	float: left;
+}
+
+.editor {
+	width: 60%;
+	float: left;
+}
+
+.svg-container {
+	border: 1px solid;
+}
+
+.pictogram {
+	border:1px solid;
+    cursor: move;
+    resize:both;
+}
