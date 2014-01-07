@@ -120,6 +120,21 @@ var App = {
 		console.log('create pictogram div '+svg);
 		chartDiv.appendChild(svg);
 		svgContainer.appendChild(chartDiv);
+	},
+
+	bringToForm: function(chartId) {
+		var picto = App.picto[chartId];
+		document.getElementById('chartId').innerHTML = picto.pictId;
+		document.getElementById('chartName').value = picto.name;
+		for (i = 0; i < picto.data.length; i++) {
+			var formData = document.getElementsByClassName('form');
+
+			formData[i].getElementsByClassName('itemId')[0].value = picto.data[i].id;
+			formData[i].getElementsByClassName('icon')[0].value = picto.data[i].icon; 
+			formData[i].getElementsByClassName('name')[0].value = picto.data[i].dataname;
+			formData[i].getElementsByClassName('amount')[0].value = picto.data[i].amount;
+			formData[i].getElementsByClassName('color')[0].value = picto.data[i].color;
+		}
 	}
 
 };

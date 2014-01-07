@@ -25,8 +25,8 @@ is_element_having_set_coordinates = function(el){
 myDrag = function(){
 	return {
 		startMoving : function(evt, elid){ 
-
-			console.log('click' + elid);
+			// bring current elid data to form
+			App.bringToForm(elid);
 			evt = evt || win.event;
 			is_element_having_set_coordinates(elid);
 			var posX = evt.clientX, // The x-coordinate of the mouse pointer position on the screen
