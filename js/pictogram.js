@@ -1,9 +1,20 @@
 // application controller
 var App = {
-	picto: {},
+	picto: [],
 
 	addNewPictogram: function() {
 		console.log('add new pictogram');
+		var svgContainer = document.getElementById('svg-container');
+		var chartDiv = document.createElement('div');
+		chartDiv.setAttribute('id', 'pictogram2');
+		chartDiv.setAttribute('class', 'pictogram');
+		chartDiv.style.height = '300px';
+		chartDiv.style.width = '300px';
+		chartDiv.style.padding = '10px';
+
+		svgContainer.appendChild(chartDiv);
+
+		console.log(svgContainer);
 	},
 
 	createChart: function() {
@@ -62,7 +73,11 @@ var App = {
 		console.log('get chat data');
 			
 		// create Pictogram instance
-		this.picto = new Pictogram(App.getFormName(), App.getFormData());
+		var picto = new Pictogram(App.getFormName(), App.getFormData());
+		this.picto = picto;
+		/*var pictoComposed = {'pictogram1' : picto};
+		console.log(pictoComposed+' composed ');
+		this.picto.push(pictoComposed);*/
 		this.picto.render();
 
 	}
