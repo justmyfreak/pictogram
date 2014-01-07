@@ -10,12 +10,15 @@ var App = {
 		// create new Id
 		var chartId = this.generateChartId();
 		document.getElementById('chartId').innerHTML = chartId;
-
+		document.getElementById('createChart').style.display = '';
+		document.getElementById('updateChart').style.display = 'none';
 	},
 
 	createChart: function() {
 		console.log('create chart');
 		this.initData();
+		document.getElementById('createChart').style.display = 'none';
+		document.getElementById('updateChart').style.display = '';
 	},
 
 	updateChart: function() {
