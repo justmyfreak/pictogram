@@ -14,7 +14,6 @@ var App = {
 
 		svgContainer.appendChild(chartDiv);
 
-		console.log(svgContainer);
 	},
 
 	createChart: function() {

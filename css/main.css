@@ -6,10 +6,12 @@
 .editor {
 	width: 60%;
 	float: left;
+	height: 800px;
 }
 
 .svg-container {
 	border: 1px solid;
+	height: 800px;
 }
 
 .pictogram {
