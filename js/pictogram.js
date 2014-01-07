@@ -48,7 +48,7 @@ var App = {
 			data.push(singleData);
 		}
 		
-		// For dummy
+		// For dummy data
 		var formData = [
 			{id: 1, icon: 'facebook', dataname: 'Facebook User', amount: 7, color: 'red'},
 			{id: 2, icon: 'twitter', dataname: 'Twitter User', amount: 4, color: 'blue'},
@@ -59,20 +59,23 @@ var App = {
 		return data;
 	},
 
+	// get chart name from current form
 	getFormName: function() {
 		var name = document.getElementById('chartName').value;	
 		return name;
 	},
 
+	// generate id for chartId
 	getFormId: function() {
 
 	},
 
+	// data initialization
 	initData: function() {
 		console.log('get chat data');
 			
 		// create Pictogram instance
-		var picto = new Pictogram(App.getFormName(), App.getFormData());
+		var picto = new Pictogram('pictogram1', App.getFormName(), App.getFormData());
 		this.picto = picto;
 		/*var pictoComposed = {'pictogram1' : picto};
 		console.log(pictoComposed+' composed ');
@@ -83,14 +86,15 @@ var App = {
 };
 
 // Pictogram class
-function Pictogram(name, data) {
+function Pictogram(id, name, data) {
 	this.name = name;
-	this.pictId = 'pictogram1';
+	this.pictId = id;
 	this.data = data;
 	// this.Pictogram = []; // Collection of pictogram
 	console.log('Pictogram '+name+' created with data : '+ this.data);
 }
 
+// clear svgs object from canvas
 Pictogram.prototype.refresh = function() {
 	var svg = document.getElementById(this.pictId).getElementsByTagName('svg')['0'];
 	while (svg.firstChild) {
@@ -98,10 +102,12 @@ Pictogram.prototype.refresh = function() {
 	}
 }
 
+// update chart data
 Pictogram.prototype.updateData = function(data) {
 	this.data = data;
 }
 
+// reder chart to view
 Pictogram.prototype.render = function() {
 	var text = '';
 	for (i = 0; i < this.data.length; i++) {
@@ -128,14 +134,18 @@ Pictogram.prototype.render = function() {
 		for (j = 0; j < this.data[i].amount; j++) {
 			var x1 = 100 + (20 * j);
 			var y1 = y - 15;
+			// create new icon
 			var rect = iconRect(x1, y1, this.data[i].color);
 			
+			// append icon to group
 			g.appendChild(rect);
 		}
 		// console.log(this.data[i].amount);
-		// append to group
+
+		// append text to group
 		g.appendChild(textSvg);
-		// appdend to main svg
+
+		// append group to main svg
 		svg.appendChild(g);
 
 		console.log(g)

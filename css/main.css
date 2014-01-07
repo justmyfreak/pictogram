@@ -18,4 +18,5 @@
 	border:1px solid;
     cursor: move;
     resize:both;
+    padding: 10px;
 }
