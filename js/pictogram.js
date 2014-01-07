@@ -187,7 +187,7 @@ Pictogram.prototype.render = function() {
 			var x1 = 100 + (20 * j);
 			var y1 = y - 15;
 			// create new icon
-			var rect = iconRect(x1, y1, this.data[i].color);
+			var rect = iconCircle(x1, y1, this.data[i].color);
 			
 			// append icon to group
 			g.appendChild(rect);
@@ -219,6 +219,18 @@ function iconRect(x, y, color) {
 	rect.setAttribute('height', 16);
 	rect.style.fill = color;
 	return rect;
+}
+
+function iconCircle(x, y, color) {
+	var circ = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+	y = y + 10;
+	circ.setAttribute('cx', x);
+	circ.setAttribute('cy', y);
+	circ.setAttribute('r', '6');
+	circ.setAttribute('stroke', 'black');
+	circ.setAttribute('stroke-width', "1");
+	circ.setAttribute('fill', color);
+	return circ;
 }
 
 // End of Icon
