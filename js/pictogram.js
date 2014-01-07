@@ -1,5 +1,7 @@
 // application controller
 var App = {
+
+	// Pictogram collection
 	picto: [],
 
 	addNewPictogram: function() {
@@ -75,12 +77,12 @@ var App = {
 		console.log('get chat data');
 			
 		// create Pictogram instance
-		var picto = new Pictogram('pictogram1', App.getFormName(), App.getFormData());
-		this.picto = picto;
-		/*var pictoComposed = {'pictogram1' : picto};
-		console.log(pictoComposed+' composed ');
-		this.picto.push(pictoComposed);*/
-		this.picto.render();
+		var chartId = 'pictogram1';
+		var picto = new Pictogram(chartId, App.getFormName(), App.getFormData());
+		
+		console.log(chartId+' composed ');
+		this.picto[chartId] = picto;
+		this.picto[chartId].render();
 
 	}
 };
