@@ -6,15 +6,10 @@ var App = {
 
 	addNewPictogram: function() {
 		console.log('add new pictogram');
-		var svgContainer = document.getElementById('svg-container');
-		var chartDiv = document.createElement('div');
-		chartDiv.setAttribute('id', 'pictogram2');
-		chartDiv.setAttribute('class', 'pictogram');
-		chartDiv.style.height = '300px';
-		chartDiv.style.width = '300px';
-		chartDiv.style.padding = '10px';
-
-		svgContainer.appendChild(chartDiv);
+		
+		// create new Id
+		var chartId = this.generateChartId();
+		document.getElementById('chartId').innerHTML = chartId;
 
 	},
 
@@ -25,8 +20,15 @@ var App = {
 
 	updateChart: function() {
 		console.log('update chart');
-		this.picto.refresh();
-		this.initData();
+		var chartId = this.getFormId();
+		this.picto[chartId].refresh();
+		
+		var chartId = this.getFormId();
+		var picto = new Pictogram(chartId, App.getFormName(), App.getFormData());
+		
+		console.log(chartId+' composed ');
+		this.picto[chartId] = picto;
+		this.picto[chartId].render();
 	},
 
 	getFormData: function() {
@@ -67,9 +69,10 @@ var App = {
 		return name;
 	},
 
-	// generate id for chartId
+	// get chartId from form
 	getFormId: function() {
-
+		var chartId = document.getElementById('chartId');
+		return chartId.innerHTML;
 	},
 
 	// data initialization
@@ -77,14 +80,46 @@ var App = {
 		console.log('get chat data');
 			
 		// create Pictogram instance
-		var chartId = 'pictogram1';
+		var chartId = this.getFormId();
+		this.createPictogramDiv(chartId);
 		var picto = new Pictogram(chartId, App.getFormName(), App.getFormData());
 		
 		console.log(chartId+' composed ');
 		this.picto[chartId] = picto;
 		this.picto[chartId].render();
 
+	},
+
+	// generate random character for chartId
+	generateChartId: function() {
+		return Math.random().toString(36).slice(2);
+	},
+
+	createPictogramDiv: function(chartId) {
+		var svgContainer = document.getElementById('svg-container');
+		var chartDiv = document.createElement('div');
+		chartDiv.setAttribute('id', chartId);
+		chartDiv.setAttribute('class', 'pictogram');
+		chartDiv.style.height = '300px';
+		chartDiv.style.width = '300px';
+		chartDiv.style.padding = '10px';
+
+		var svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+		svg.setAttribute('height', '100%');
+		svg.setAttribute('width', '100%');
+		svg.setAttribute('version', '1.1');
+		svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+		svg.style.overflow = 'hidden';
+		svg.style.position = 'relative';
+		svg.style.left = '-0.5px';
+		svg.setAttribute('viewBox', '0 0 225 300');
+		svg.setAttribute('preserveAspectRatio', 'xMinYMin meet');
+
+		console.log('create pictogram div '+svg);
+		chartDiv.appendChild(svg);
+		svgContainer.appendChild(chartDiv);
 	}
+
 };
 
 // Pictogram class
