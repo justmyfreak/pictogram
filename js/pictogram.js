@@ -37,11 +37,6 @@ var App = {
 		var formData1 = document.getElementsByClassName('form');
 		var data = [];
 		for (i = 0; i< formData1.length; i++) {
-			console.log(formData1[i].getElementsByClassName('itemId')[0].value);
-			console.log(formData1[i].getElementsByClassName('icon')[0].value);
-			console.log(formData1[i].getElementsByClassName('name')[0].value);
-			console.log(formData1[i].getElementsByClassName('amount')[0].value);
-			console.log(formData1[i].getElementsByClassName('color')[0].value);
 			var singleData = {
 				id: formData1[i].getElementsByClassName('itemId')[0].value, 
 				icon: formData1[i].getElementsByClassName('icon')[0].value, 
@@ -202,7 +197,6 @@ Pictogram.prototype.render = function() {
 		// append group to main svg
 		svg.appendChild(g);
 
-		console.log(g)
 		// console.log(svg);
 		text += '<g><text x="0" y="'+y+'" fill="blue" > '+this.data[i].dataname+' </text></g>';
 	}
