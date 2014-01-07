@@ -187,10 +187,16 @@ Pictogram.prototype.render = function() {
 			var x1 = 100 + (20 * j);
 			var y1 = y - 15;
 			// create new icon
-			var rect = iconRect(x1, y1, this.data[i].color);
+			if (this.data[i].icon == 'rect') {
+				var newIcon = iconRect(x1, y1, this.data[i].color);			
+			} else if (this.data[i].icon == 'circle') {
+				var newIcon = iconCircle(x1, y1, this.data[i].color);
+			} else if (this.data[i].icon == 'ellipse') {
+				var newIcon = iconEllipse(x1, y1, this.data[i].color);
+			}
 			
 			// append icon to group
-			g.appendChild(rect);
+			g.appendChild(newIcon);
 		}
 		// console.log(this.data[i].amount);
 
@@ -212,6 +218,7 @@ Pictogram.prototype.render = function() {
 // Icon 
 // Rect Icon
 function iconRect(x, y, color) {
+	y = y + 2;
 	var rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
 	rect.setAttribute('x', x);
 	rect.setAttribute('y', y);
@@ -224,9 +231,10 @@ function iconRect(x, y, color) {
 function iconCircle(x, y, color) {
 	var circ = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
 	y = y + 10;
+	x = x + 9;
 	circ.setAttribute('cx', x);
 	circ.setAttribute('cy', y);
-	circ.setAttribute('r', '6');
+	circ.setAttribute('r', '7');
 	circ.setAttribute('stroke', 'black');
 	circ.setAttribute('stroke-width', "1");
 	circ.setAttribute('fill', color);
@@ -235,10 +243,11 @@ function iconCircle(x, y, color) {
 
 function iconEllipse(x, y, color) {
 	y = y + 10;
+	x = x + 9;
 	var ellipse = document.createElementNS("http://www.w3.org/2000/svg", 'ellipse');
 	ellipse.setAttribute('cx', x);
 	ellipse.setAttribute('cy', y);
-	ellipse.setAttribute('rx', '6');
+	ellipse.setAttribute('rx', '7');
 	ellipse.setAttribute('ry', '4');
 	ellipse.setAttribute('fill', color);
 	ellipse.setAttribute('stroke', 'black');
