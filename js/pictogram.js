@@ -168,7 +168,7 @@ Pictogram.prototype.render = function() {
 		var y = (20 * i) + 15;
 
 		// svg holder
-		var svg = document.getElementById(this.pictId).getElementsByTagName('svg')['0'];
+		var svg = $id(this.pictId).getElementsByTagName('svg')['0'];
 
 		// create new group
 		var g = document.createElementNS("http://www.w3.org/2000/svg", 'g');
@@ -199,6 +199,16 @@ Pictogram.prototype.render = function() {
 			g.appendChild(newIcon);
 		}
 		// console.log(this.data[i].amount);
+		if (this.data[i].amount > 10) {
+			console.log('should extend container');
+			var additional 		= this.data[i].amount - 10;
+			var divContainer 	= $id(this.pictId);
+			var curentWidth 	= parseInt(divContainer.style.width);
+			additional 			= additional * 17;
+			var finalWidth 		= additional + curentWidth;
+			var finalWidthPx 	= finalWidth + 'px';
+			divContainer.style.width = finalWidthPx;
+		}
 
 		// append text to group
 		g.appendChild(textSvg);
