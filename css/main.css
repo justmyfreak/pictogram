@@ -15,8 +15,11 @@
 }
 
 .pictogram {
-	border:1px solid;
     cursor: move;
     resize:both;
     padding: 10px;
+}
+
+.pictogram:hover {
+	border:1px solid;
 }
