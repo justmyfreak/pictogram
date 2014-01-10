@@ -44,7 +44,7 @@ var App = {
 				id: formData1[i].getElementsByClassName('itemId')[0].value, 
 				icon: formData1[i].getElementsByClassName('icon')[0].value, 
 				dataname: formData1[i].getElementsByClassName('name')[0].value, 
-				amount: formData1[i].getElementsByClassName('amount')[0].value, 
+				amount: formData1[i].getElementsByClassName('amount')[0].value == '' ? 0 : formData1[i].getElementsByClassName('amount')[0].value, 
 				color: formData1[i].getElementsByClassName('color')[0].value
 			};
 			data.push(singleData);
@@ -162,6 +162,7 @@ Pictogram.prototype.updateData = function(data) {
 // reder chart to view
 Pictogram.prototype.render = function() {
 	var text = '';
+	var amountElem = []; // Temporary data for amount
 	for (i = 0; i < this.data.length; i++) {
 		
 		// Set default indentation between text line
@@ -198,17 +199,10 @@ Pictogram.prototype.render = function() {
 			// append icon to group
 			g.appendChild(newIcon);
 		}
+
+		// add new amount element that will be sorted
+		amountElem.push(parseInt(this.data[i].amount));
 		// console.log(this.data[i].amount);
-		if (this.data[i].amount > 10) {
-			console.log('should extend container');
-			var additional 		= this.data[i].amount - 10;
-			var divContainer 	= $id(this.pictId);
-			var curentWidth 	= parseInt(divContainer.style.width);
-			additional 			= additional * 17;
-			var finalWidth 		= additional + curentWidth;
-			var finalWidthPx 	= finalWidth + 'px';
-			divContainer.style.width = finalWidthPx;
-		}
 
 		// append text to group
 		g.appendChild(textSvg);
@@ -221,6 +215,21 @@ Pictogram.prototype.render = function() {
 	}
 	// console.log(text);
 
+	// get the largest amount and sort it descending
+	var sortedElem = amountElem.sort(function(a,b){return b-a});
+	if (sortedElem[0] >= 10) {
+		console.log('should extend container');
+		var additional 		= sortedElem[0] - 10;
+		var divContainer 	= $id(this.pictId);
+		var curentWidth 	= parseInt(divContainer.style.width);
+		additional 			= additional * 20;
+		var finalWidth 		= additional + 300;
+		var finalWidthPx 	= finalWidth + 'px';
+		// console.log('final'+finalWidth);
+		
+		divContainer.style.width = finalWidthPx;
+		
+	}
 	// console.log(text);
 	console.log('render to browser');
 }
