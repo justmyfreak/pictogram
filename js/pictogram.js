@@ -44,7 +44,7 @@ var App = {
 				id: formData1[i].getElementsByClassName('itemId')[0].value, 
 				icon: formData1[i].getElementsByClassName('icon')[0].value, 
 				dataname: formData1[i].getElementsByClassName('name')[0].value, 
-				amount: formData1[i].getElementsByClassName('amount')[0].value, 
+				amount: formData1[i].getElementsByClassName('amount')[0].value == '' ? 0 : formData1[i].getElementsByClassName('amount')[0].value, 
 				color: formData1[i].getElementsByClassName('color')[0].value
 			};
 			data.push(singleData);
@@ -162,13 +162,14 @@ Pictogram.prototype.updateData = function(data) {
 // reder chart to view
 Pictogram.prototype.render = function() {
 	var text = '';
+	var amountElem = []; // Temporary data for amount
 	for (i = 0; i < this.data.length; i++) {
 		
 		// Set default indentation between text line
 		var y = (20 * i) + 15;
 
 		// svg holder
-		var svg = document.getElementById(this.pictId).getElementsByTagName('svg')['0'];
+		var svg = $id(this.pictId).getElementsByTagName('svg')['0'];
 
 		// create new group
 		var g = document.createElementNS("http://www.w3.org/2000/svg", 'g');
@@ -198,6 +199,9 @@ Pictogram.prototype.render = function() {
 			// append icon to group
 			g.appendChild(newIcon);
 		}
+
+		// add new amount element that will be sorted
+		amountElem.push(parseInt(this.data[i].amount));
 		// console.log(this.data[i].amount);
 
 		// append text to group
@@ -211,6 +215,21 @@ Pictogram.prototype.render = function() {
 	}
 	// console.log(text);
 
+	// get the largest amount and sort it descending
+	var sortedElem = amountElem.sort(function(a,b){return b-a});
+	if (sortedElem[0] >= 10) {
+		console.log('should extend container');
+		var additional 		= sortedElem[0] - 10;
+		var divContainer 	= $id(this.pictId);
+		var curentWidth 	= parseInt(divContainer.style.width);
+		additional 			= additional * 20;
+		var finalWidth 		= additional + 300;
+		var finalWidthPx 	= finalWidth + 'px';
+		// console.log('final'+finalWidth);
+		
+		divContainer.style.width = finalWidthPx;
+		
+	}
 	// console.log(text);
 	console.log('render to browser');
 }
