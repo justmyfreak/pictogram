@@ -133,6 +133,21 @@ var App = {
 			formData[i].getElementsByClassName('amount')[0].value = picto.data[i].amount;
 			formData[i].getElementsByClassName('color')[0].value = picto.data[i].color;
 		}
+	},
+
+	// scale helper
+	scale: function(actual, max) {
+		var scaled = actual;
+		if (max < 20) {
+			scaled = actual;
+		} else if ((max > 200) && (max <= 2000)) {
+			scaled = actual / 100;
+		} else if ((max <= 200) && (max > 20)) {
+			scaled = actual / 10;
+		} else {
+			scaled = actual / (max / 20);
+		}
+		return scaled;
 	}
 
 };
@@ -164,6 +179,10 @@ Pictogram.prototype.render = function() {
 	var text = '';
 	var amountElem = []; // Temporary data for amount
 	for (i = 0; i < this.data.length; i++) {
+		amountElem.push(parseInt(this.data[i].amount));
+	}
+	var sortedElem = amountElem.sort(function(a,b){return b-a});
+	for (i = 0; i < this.data.length; i++) {
 		
 		// Set default indentation between text line
 		var y = (20 * i) + 15;
@@ -184,7 +203,7 @@ Pictogram.prototype.render = function() {
 		textSvg.appendChild(txt);
 
 		// icon
-		for (j = 0; j < this.data[i].amount; j++) {
+		for (j = 0; j < App.scale(this.data[i].amount, sortedElem[0]); j++) {
 			var x1 = 100 + (20 * j);
 			var y1 = y - 15;
 			// create new icon
@@ -201,7 +220,6 @@ Pictogram.prototype.render = function() {
 		}
 
 		// add new amount element that will be sorted
-		amountElem.push(parseInt(this.data[i].amount));
 		// console.log(this.data[i].amount);
 
 		// append text to group
@@ -216,7 +234,6 @@ Pictogram.prototype.render = function() {
 	// console.log(text);
 
 	// get the largest amount and sort it descending
-	var sortedElem = amountElem.sort(function(a,b){return b-a});
 	if (sortedElem[0] >= 10) {
 		console.log('should extend container');
 		var additional 		= sortedElem[0] - 10;
