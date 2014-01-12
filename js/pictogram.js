@@ -234,9 +234,9 @@ Pictogram.prototype.render = function() {
 	// console.log(text);
 
 	// get the largest amount and sort it descending
-	if (sortedElem[0] >= 10) {
+	if (App.scale(sortedElem[0], sortedElem[0]) >= 10) {
 		console.log('should extend container');
-		var additional 		= sortedElem[0] - 10;
+		var additional 		= App.scale(sortedElem[0], sortedElem[0]) - 10;
 		var divContainer 	= $id(this.pictId);
 		var curentWidth 	= parseInt(divContainer.style.width);
 		additional 			= additional * 20;
