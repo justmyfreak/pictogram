@@ -17,7 +17,7 @@ var App = {
 	addNewRow: function() {
 		var lastId = App.countRows();
 		var formContainer = $id('form-container');
-		console.log(formContainer);
+		formContainer.innerHTML += '<div class="form"><input type="hidden" class="itemId" value="'+lastId+'"><select class="icon" name="icon"><option value="rect">rect</option><option value="circle">circle</option><option value="ellipse">ellipse</option></select> <input placeholder="label" type="text" class="name" name="name" placholder="Name"> <input min="0" type="number" class="amount" name="amount"> <select class="color" name="color"><option value="red">red</option><option value="yellow">yellow</option><option value="blue">blue</option><option value="green">green</option></select></div>';
 	},
 
 	countRows: function() {
