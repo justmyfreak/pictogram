@@ -14,6 +14,17 @@ var App = {
 		document.getElementById('updateChart').style.display = 'none';
 	},
 
+	addNewRow: function() {
+		var lastId = App.countRows();
+		var formContainer = $id('form-container');
+		console.log(formContainer);
+	},
+
+	countRows: function() {
+		var rowCount = document.getElementsByClassName('form');
+		return rowCount.length;
+	},
+
 	createChart: function() {
 		console.log('create chart');
 		this.initData();
