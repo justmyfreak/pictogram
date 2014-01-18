@@ -14,75 +14,79 @@
 			<button onclick="App.addNewPictogram()">Add New Chart</button>
 			<hr style="width:97%">
 		</div>
-		<div class="new-chart">
+		<div id="new-chart" class="new-chart">
 			<div>Chart Name : <input type="text" id="chartName" name="chartName"> Chart ID : <span id="chartId">afwty126</span></div>
-			<div class="form">
-				<input type="hidden" class="itemId" value="1">
-				<select class="icon" name="icon">
-					<option value="rect">rect</option>
-					<option value="circle">circle</option>
-					<option value="ellipse">ellipse</option>
-				</select>
-				<input placeholder="label" type="text" value="Data 1" class="name" name="name" placholder="Name">
-				<input min="0" type="number" class="amount" name="amount">
-				<select class="color" name="color">
-					<option value="red">red</option>
-					<option value="yellow">yellow</option>
-					<option value="blue">blue</option>
-					<option value="green">green</option>
-				</select>
+			<div id="form-container">
+				<div class="form">
+					<input type="hidden" class="itemId" value="1">
+					<select class="icon" name="icon">
+						<option value="rect">rect</option>
+						<option value="circle">circle</option>
+						<option value="ellipse">ellipse</option>
+					</select>
+					<input placeholder="label" type="text" value="Data 1" class="name" name="name" placholder="Name">
+					<input min="0" type="number" class="amount" name="amount">
+					<select class="color" name="color">
+						<option value="red">red</option>
+						<option value="yellow">yellow</option>
+						<option value="blue">blue</option>
+						<option value="green">green</option>
+					</select>
+				</div>
+				<div class="form">
+					<input type="hidden" class="itemId" value="2">
+					<select class="icon" name="icon">
+						<option value="rect">rect</option>
+						<option value="circle">circle</option>
+						<option value="ellipse">ellipse</option>
+					</select>
+					<input placeholder="label" type="text" class="name" name="name" placholder="Name">
+					<input min="0" type="number" class="amount" name="amount">
+					<select class="color" name="color">
+						<option value="red">red</option>
+						<option value="yellow">yellow</option>
+						<option value="blue">blue</option>
+						<option value="green">green</option>
+					</select>
+				</div>
+				<div class="form">
+					<input type="hidden" class="itemId" value="3">
+					<select class="icon" name="icon">
+						<option value="rect">rect</option>
+						<option value="circle">circle</option>
+						<option value="ellipse">ellipse</option>
+					</select>
+					<input placeholder="label" type="text" class="name" name="name" placholder="Name">
+					<input min="0" type="number" class="amount" name="amount">
+					<select class="color" name="color">
+						<option value="red">red</option>
+						<option value="yellow">yellow</option>
+						<option value="blue">blue</option>
+						<option value="green">green</option>
+					</select>
+				</div>
+				<div class="form">
+					<input type="hidden" class="itemId" value="4">
+					<select class="icon" name="icon">
+						<option value="rect">rect</option>
+						<option value="circle">circle</option>
+						<option value="ellipse">ellipse</option>
+					</select>
+					<input placeholder="label" type="text" class="name" name="name" placholder="Name">
+					<input min="0" type="number" class="amount" name="amount">
+					<select class="color" name="color">
+						<option value="red">red</option>
+						<option value="yellow">yellow</option>
+						<option value="blue">blue</option>
+						<option value="green">green</option>
+					</select>
+				</div>
 			</div>
-			<div class="form">
-				<input type="hidden" class="itemId" value="2">
-				<select class="icon" name="icon">
-					<option value="rect">rect</option>
-					<option value="circle">circle</option>
-					<option value="ellipse">ellipse</option>
-				</select>
-				<input placeholder="label" type="text" class="name" name="name" placholder="Name">
-				<input min="0" type="number" class="amount" name="amount">
-				<select class="color" name="color">
-					<option value="red">red</option>
-					<option value="yellow">yellow</option>
-					<option value="blue">blue</option>
-					<option value="green">green</option>
-				</select>
-			</div>
-			<div class="form">
-				<input type="hidden" class="itemId" value="3">
-				<select class="icon" name="icon">
-					<option value="rect">rect</option>
-					<option value="circle">circle</option>
-					<option value="ellipse">ellipse</option>
-				</select>
-				<input placeholder="label" type="text" class="name" name="name" placholder="Name">
-				<input min="0" type="number" class="amount" name="amount">
-				<select class="color" name="color">
-					<option value="red">red</option>
-					<option value="yellow">yellow</option>
-					<option value="blue">blue</option>
-					<option value="green">green</option>
-				</select>
-			</div>
-			<div class="form">
-				<input type="hidden" class="itemId" value="4">
-				<select class="icon" name="icon">
-					<option value="rect">rect</option>
-					<option value="circle">circle</option>
-					<option value="ellipse">ellipse</option>
-				</select>
-				<input placeholder="label" type="text" class="name" name="name" placholder="Name">
-				<input min="0" type="number" class="amount" name="amount">
-				<select class="color" name="color">
-					<option value="red">red</option>
-					<option value="yellow">yellow</option>
-					<option value="blue">blue</option>
-					<option value="green">green</option>
-				</select>
-			</div>
-			<button id="createChart" onclick="App.createChart()">Create Chart</button>
-			<button id="updateChart" style="display:none;" onclick="App.updateChart()">Update Chart</button>
 		</div>
+		<button id="addnewrow" onclick="App.addNewRow()">Add New Row</button>
+		<br>
+		<button id="createChart" onclick="App.createChart()">Create Chart</button>
+		<button id="updateChart" style="display:none;" onclick="App.updateChart()">Update Chart</button>
 	</div>
 	<div id="editor" class="editor">
 		<div id="svg-container" class="svg-container">
